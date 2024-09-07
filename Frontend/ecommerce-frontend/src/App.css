@@ -2,6 +2,22 @@
     --color-bg: #131921;
     --color-border: #3b4149;
     --btn-bg-color: rgb(209, 150, 77);
+    --linkcolor: #bfbfbf;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #f5f5f7 !important;
+    display: grid;
+    place-self: center;
+}
+
+.bs-form {
+    padding: 0.8rem;
 }
 
 /* Header part */
@@ -14,7 +30,7 @@
 .header-master-sec {
     background-color: var(--color-bg);
     background-color: var(--color-border);
-    height: 50px;
+    height: fit-content;
     display: flex;
     gap: 350px;
 }
@@ -85,7 +101,24 @@ BsSearch.search {
     color: black !important;
 }
 
-@media (max-width: 767px) {
+/* max-width:767px; */
+#sec-nav {
+    padding: 0px !important;
+
+    a {
+        margin-left: 1rem;
+    }
+
+    button {
+        margin-right: 1rem;
+    }
+
+    height: max-content;
+    padding-bottom: 0.8rem !important;
+    padding-top: 0.8rem !important;
+}
+
+@media (width<=992px) {
 
     .offer,
     .contact-info {
@@ -105,10 +138,10 @@ BsSearch.search {
         /* Aligns the dropdown menu to the left */
     }
 
-    
-
     .header-master-sec {
-        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+        justify-items: center;
     }
 
     .carousel-caption {
@@ -119,6 +152,7 @@ BsSearch.search {
     }
 
 }
+
 @media (max-width: 997px) {
     .banner {
         width: fit-content;
@@ -126,7 +160,8 @@ BsSearch.search {
         display: flex;
         flex-direction: column;
     }
-    .banner>.col{
+
+    .banner>.col {
         margin: 10px;
     }
 }
@@ -140,12 +175,27 @@ BsSearch.search {
     /* Dark background color */
     color: #ffffff;
     /* White text color */
-    margin-top: 100px;
+    margin-top: 1rem;
+}
+
+.footer-row {
+    row-gap: 1rem;
+
+    div {
+        div {
+            width: fit-content;
+            margin: auto;
+        }
+
+        place-items: center center;
+
+    }
 }
 
 .footer h5 {
     color: #ffffff;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .footer p,
@@ -159,7 +209,7 @@ BsSearch.search {
 
 .social-icons a {
     color: #ffffff;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .social-icons a:hover {
@@ -183,68 +233,307 @@ BsSearch.search {
     background-color: var(--color-bg) !important;
     color: white !important;
 }
-.marquee-height{
+
+.marquee-height {
     height: 125px;
     width: 90vw !important;
     margin: auto;
     border: 2px solid transparent;
-    box-shadow: -10px 10px 10px white;
+    /* box-shadow: -1px 1px 10px white; */
 }
-.marquee-wrapper{
+
+.marquee-wrapper {
     position: relative;
     height: 100%;
 }
-.brand-div{
+
+.brand-div {
     width: 13vw;
     padding: 0rem;
     height: 100%;
 }
-.marque-img{
+
+.marque-img {
     object-fit: cover;
     width: 70%;
 }
-.rfm-marquee-container{
+
+.rfm-marquee-container {
     position: absolute !important;
-    height: 90% !important;
+    height: 94% !important;
     overflow-y: hidden;
     padding: 0px;
     background-color: rgb(235, 241, 247);
 }
-.marquee-wrapper:after{
+
+.marquee-wrapper:after {
     position: absolute;
     top: 0;
     right: 0;
     width: 10%;
-    height: 100%;
+    height: 90%;
     z-index: 2;
     content: "";
-    background: linear-gradient(to right,rgba(255,255,255,0),rgb(235, 241, 247),rgb(235, 241, 247),rgb(235, 241, 247),rgb(235, 241, 247));
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(235, 241, 247), rgb(235, 241, 247), rgb(235, 241, 247), rgb(235, 241, 247));
 }
-.marquee-wrapper:before{
+
+.marquee-wrapper:before {
     position: absolute;
-    background: linear-gradient(to left,rgba(255, 255, 255, 0),rgb(235, 241, 247),rgb(235, 241, 247),rgb(235, 241, 247),rgb(235, 241, 247));
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), rgb(235, 241, 247), rgb(235, 241, 247), rgb(235, 241, 247), rgb(235, 241, 247));
     top: 0;
     left: 0;
     width: 10%;
-    height: 100%;
+    height: 90%;
     z-index: 2;
     content: "";
 }
-.product-card{
+
+.product-card {
     background-color: white;
     margin: 10px;
     height: 410px;
     margin-left: 1px;
 }
-.product-image{
-    img{
+
+.product-image {
+    img {
         object-fit: cover;
         width: 100%;
         height: 100%;
     }
 }
-.blog-wrappper{
-    .container{
+
+.blog-wrappper {
+    .container {
         padding: 0px;
     }
+}
+
+.navbar {
+    padding: 0px !important;
+}
+
+#third-nav {
+
+    background-color: black;
+    height: 100% !important;
+    flex-wrap: wrap;
+    display: flex;
+    padding-left: 9rem;
+    padding-right: 9rem;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100vw;
+
+    .nav-link {
+        color: var(--linkcolor);
+    }
+
+    .nav-link:hover {
+        color: white;
+    }
+
+    .dropdown {
+        width: 7rem;
+    }
+}
+
+.third-nav-outer {
+    height: fit-content;
+}
+
+#third-nav{
+    width: 100%;
+}
+
+@media (width<=735px) {
+    #third-nav{
+        a{
+            display: grid;
+            place-content: center;
+        }
+        display: grid;
+        grid-template-rows: repeat(5,1fr);
+        place-content: center;
+    }
+
+}
+
+#basic-nav-dropdown {
+    color: white;
+
+}
+
+/* ---------------------- My Store------------------------*/
+.breadcrumb {
+    margin: 0px !important;
+}
+
+.store-wrapper {
+    display: grid;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    grid-template-columns: 30% auto;
+    height: fit-content;
+    width: auto;
+    column-gap: 1rem;
+}
+
+@media screen and (width <= 545px) {
+    .store-wrapper{
+        display: flex;
+        flex-direction: column;
+        place-items: center;
+    }
+}
+
+@media (width>=0px) and (height >=0px) {
+    #back-to-top-anchor{
+        min-height: 0px !important;
+    }
+    
+}
+
+
+.store-filter {
+    row-gap: 1rem;
+    display: grid;
+    grid-template-rows: 1fr 4fr 1fr 2fr;
+    width: fit-content;
+
+    div {
+        background-color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #1c1c1b;
+        padding: 0.3rem;
+        border-radius: 1rem;
+    }
+}
+
+.store-result-area {
+    background-color: white;
+    border-radius: 1rem;
+}
+
+.category-filter-list {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    ul {
+        font-weight: 300;
+        font-size: 0.9rem;
+        line-height: 2rem;
+        list-style: none;
+
+    }
+}
+
+.checked-input {
+    accent-color: rgb(250, 117, 8);
+    cursor: pointer;
+}
+
+.stock-filter-list {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: grid;
+    grid-template-rows: 0.3fr 0.9fr 0.5fr 3fr;
+}
+
+/* --------------------------contact---------------------------- */
+.contact-us-wrapper {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 3rem;
+}
+
+.map-location {
+    iframe {
+        width: 100%;
+        border-radius: 1rem;
+    }
+}
+/* ------------contact-info--------------------- */
+.contact-us{
+    display: grid;
+    /* place-items: center; */
+
+}
+.contact-req{
+    width: 100%;
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 4rem;
+}
+
+.comment{
+    background-color: rgb(0 0 0 / 6%);
+}
+
+.MuiBox-root{
+    display: grid;
+    row-gap: 1rem;
+}
+
+.MuiFormControl-root{
+    width: 100% !important;
+    margin: 0px !important;
+}
+
+.reach-us{
+
+    display: grid;
+    grid-template-rows: repeat(4,10%);
+    row-gap: 1rem;
+    padding: 0px;
+    /* place-items: center; */
+    div{
+        display: grid;
+        grid-template-columns: max-content max-content;
+        gap: 1rem;
+        margin-left: 1rem;
+        place-items: center;
+        .MuiSvgIcon-root{
+            margin: 0px !important;
+        }
+    }
+}
+
+/* .contact-us{
+    display: grid;
+    place-items: center;
+} */
+
+/* ----------------------------------login------------------------------ */
+.login-wrapper > div{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.login-wrapper > div > form{
+    .text-end{
+        padding-top: 1rem;
+    }
+    /* div{
+        place-self: center;
+    } */
+   .Button-wrapper{
+    display: flex;
+    justify-content: space-evenly;
+    place-self: center;
+    width: auto;
+    border-radius: 1rem;
+    gap: 1rem;
+   }
+}
+
+.login-inner-wrapper{
+    width: fit-content !important;
+}
+
+/* ---------------------scrollTotop--------------------------- */
+button[aria-label="scroll back to top"]:hover{
+    background-color: #007bff;
 }

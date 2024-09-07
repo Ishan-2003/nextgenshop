@@ -119,7 +119,7 @@ const Home = () => {
                 <p>Featured Collections</p>
             </Col>
         </Row>
-        <Row sm={6} className='blog-inner-wrapper'>
+        <Row sm={6} className='product-inner-wrapper'>
             {
                 Array.from({length:6},(val,indx)=><ProductCard/>)
             }

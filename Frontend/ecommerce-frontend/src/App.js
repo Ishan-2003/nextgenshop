@@ -1,26 +1,44 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './features/counter/Components/Layout';
 import Home from './features/counter/pages/Home';
 import About from './features/counter/pages/About';
-import Contact from './features/counter/pages/Contact';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Ourstore from './features/counter/pages/Ourstore';
+import ContactUs from './features/counter/pages/ContactUs';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import Fab from '@mui/material/Fab';
+import ScrollTop from './features/counter/Components/ScrollTop';
+import Toolbar from '@mui/material/Toolbar';
+import Login from './features/counter/pages/Login';
+import Signup from './features/counter/pages/Signup';
+import Forgotpassword from './features/counter/pages/Forgotpassword';
 
-function App() {
+function App(props) {
   return (
-  <>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Layout/>}>
-          <Route index element={<Home/>}/>
-          <Route path='about' element={<About/>}/>
-          <Route path='contact' element={<Contact/>}/>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  </>
+    <>
+      <Toolbar id="back-to-top-anchor"/>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path='about' element={<About />} />
+            <Route path='contact' element={<ContactUs />} />
+            <Route path='store' element={<Ourstore />} />
+            <Route path='login' element={<Login/>} />
+            <Route path='signup' element={<Signup />} />
+            <Route path='forgot-password' element={<Forgotpassword />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      <ScrollTop {...props}>
+        <Fab size="small" aria-label="scroll back to top">
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </ScrollTop>
+    </>
   );
 }
 
