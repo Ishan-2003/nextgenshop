@@ -290,9 +290,15 @@ BsSearch.search {
 
 .product-card {
     background-color: white;
-    margin: 10px;
-    height: 410px;
-    margin-left: 1px;
+    border-radius: 1rem;
+    margin: 0.5rem;
+    height: fit-content;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: grid;
+    grid-template-rows: 5rem auto;
+    place-content: center;
+    place-items: center;
 }
 
 .product-image {
@@ -342,18 +348,19 @@ BsSearch.search {
     height: fit-content;
 }
 
-#third-nav{
+#third-nav {
     width: 100%;
 }
 
 @media (width<=735px) {
-    #third-nav{
-        a{
+    #third-nav {
+        a {
             display: grid;
             place-content: center;
         }
+
         display: grid;
-        grid-template-rows: repeat(5,1fr);
+        grid-template-rows: repeat(5, 1fr);
         place-content: center;
     }
 
@@ -376,11 +383,11 @@ BsSearch.search {
     grid-template-columns: 30% auto;
     height: fit-content;
     width: auto;
-    column-gap: 1rem;
+    gap: 1rem;
 }
 
-@media screen and (width <= 545px) {
-    .store-wrapper{
+@media screen and (width <=545px) {
+    .store-wrapper {
         display: flex;
         flex-direction: column;
         place-items: center;
@@ -388,10 +395,10 @@ BsSearch.search {
 }
 
 @media (width>=0px) and (height >=0px) {
-    #back-to-top-anchor{
+    #back-to-top-anchor {
         min-height: 0px !important;
     }
-    
+
 }
 
 
@@ -410,10 +417,80 @@ BsSearch.search {
         border-radius: 1rem;
     }
 }
-
-.store-result-area {
+.store-res-wrapper{
+    display: grid;
+    grid-template-rows: max-content auto;
+    row-gap: 1rem;
+    max-width: auto;
+}
+.sort-by-nav {
+    /* border: 2px solid black; */
+    display: grid;
+    width: auto;
+    grid-template-columns: max-content auto;
+    height: fit-content;
+    padding: 0.3rem;
+    align-items: center;
     background-color: white;
     border-radius: 1rem;
+    gap: auto;
+    .sort-by {
+        display: grid;
+        grid-template-columns: max-content auto;
+        width: fit-content;
+        align-content: center;
+        margin-left: 1rem;
+        grid-template-rows: 100%;
+        gap: 1rem;
+        #prod-sort {
+            height: 100%;
+        }
+
+        p {
+            margin: 0px;
+            height: 100%;
+        }
+    }
+    .display-setting{
+        div{
+            svg{
+                cursor: pointer;
+                border-radius: 0.4rem;
+                background-color: #f2f2f2;
+                padding: 0.1rem;
+                margin-right: 0.3rem;
+            }
+
+            svg:nth-child(2){
+                padding: 0.4rem;
+            }
+    
+            svg:hover{
+                background-color: black
+            }
+        }
+        margin-right: 1rem;
+        justify-self: end;
+        p{
+            margin-right: 0.4rem;
+            margin-bottom: 0px;
+        }
+        display: grid;
+        width: fit-content;
+        align-content: center;
+        justify-items: end;
+        align-items: center;
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+.store-result-area {
+    background-color: white;
+    width: 100%;
+    border-radius: 1rem;
+    gap: 1rem;
+    .sorted-prod {
+        /* border: 2px solid black; */
+    }
 }
 
 .category-filter-list {
@@ -439,6 +516,25 @@ BsSearch.search {
     grid-template-rows: 0.3fr 0.9fr 0.5fr 3fr;
 }
 
+@media (width<=820px) {
+    .sort-by-nav {
+        grid-template-columns: auto;
+        grid-template-rows: repeat(2,1fr);
+        place-items: center;
+        .sort-by{
+            margin: 0px;
+            place-self: center;
+        }
+        .display-setting{
+            place-self: center;
+            margin: 0.5rem;
+            p{
+                place-self: center;
+            }
+        }
+    }
+}
+
 /* --------------------------contact---------------------------- */
 .contact-us-wrapper {
     display: grid;
@@ -453,51 +549,55 @@ BsSearch.search {
         border-radius: 1rem;
     }
 }
+
 /* ------------contact-info--------------------- */
-.contact-us{
+.contact-us {
     display: grid;
     /* place-items: center; */
 
 }
-.contact-req{
+
+.contact-req {
     width: 100%;
     border-radius: 1rem;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 1rem;
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 4rem;
 }
 
-.comment{
+.comment {
     background-color: rgb(0 0 0 / 6%);
 }
 
-.MuiBox-root{
+.MuiBox-root {
     display: grid;
     row-gap: 1rem;
 }
 
-.MuiFormControl-root{
+.MuiFormControl-root {
     width: 100% !important;
     margin: 0px !important;
 }
 
-.reach-us{
+.reach-us {
 
     display: grid;
-    grid-template-rows: repeat(4,10%);
+    grid-template-rows: repeat(4, 10%);
     row-gap: 1rem;
     padding: 0px;
+
     /* place-items: center; */
-    div{
+    div {
         display: grid;
         grid-template-columns: max-content max-content;
         gap: 1rem;
         margin-left: 1rem;
         place-items: center;
-        .MuiSvgIcon-root{
+
+        .MuiSvgIcon-root {
             margin: 0px !important;
         }
     }
@@ -509,31 +609,33 @@ BsSearch.search {
 } */
 
 /* ----------------------------------login------------------------------ */
-.login-wrapper > div{
+.login-wrapper>div {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
-.login-wrapper > div > form{
-    .text-end{
+
+.login-wrapper>div>form {
+    .text-end {
         padding-top: 1rem;
     }
+
     /* div{
         place-self: center;
     } */
-   .Button-wrapper{
-    display: flex;
-    justify-content: space-evenly;
-    place-self: center;
-    width: auto;
-    border-radius: 1rem;
-    gap: 1rem;
-   }
+    .Button-wrapper {
+        display: flex;
+        justify-content: space-evenly;
+        place-self: center;
+        width: auto;
+        border-radius: 1rem;
+        gap: 1rem;
+    }
 }
 
-.login-inner-wrapper{
+.login-inner-wrapper {
     width: fit-content !important;
 }
 
 /* ---------------------scrollTotop--------------------------- */
-button[aria-label="scroll back to top"]:hover{
+button[aria-label="scroll back to top"]:hover {
     background-color: #007bff;
 }
