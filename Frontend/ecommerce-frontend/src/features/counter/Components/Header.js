@@ -2,9 +2,12 @@ import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, Button, FormControl } from 'react-bootstrap';
 import { BsSearch } from 'react-icons/bs';
 import { TbCategoryPlus } from "react-icons/tb";
-
+import ReactFlipCard from 'reactjs-flip-card'
 
 const Header = () => {
+    const styles = {
+        card: {background: 'inherit', color: 'white',width:'inherit',height:'inherit'},
+    }
     return (
         <>
             <Navbar expand="lg" className="px-3 header-master-sec">
@@ -32,10 +35,22 @@ const Header = () => {
 
                     <Nav>
                         <Nav.Link href="/cart">
-                            <i className="fas fa-shopping-cart"></i> Cart
+                        <ReactFlipCard
+            frontStyle={styles.card}
+            backStyle={styles.card}
+            frontComponent={<i className="fas fa-shopping-cart"></i>}
+            backComponent={<i className="fas fa-shopping-cart"></i>}
+        />
+                            Cart
                         </Nav.Link>
                         <Nav.Link href="/login">
-                            <i className="fas fa-user"></i> Login
+                        <ReactFlipCard
+            frontStyle={styles.card}
+            backStyle={styles.card}
+            frontComponent={<i className="fas fa-user"></i>}
+            backComponent={<i className="fas fa-user"></i>}
+        />
+                             Login
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

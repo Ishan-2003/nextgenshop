@@ -96,20 +96,19 @@ const Ourstore = () => {
                         <div className='display-setting'>
                             <p>22 products</p>
                             <div>
-                                <RxDragHandleVertical size={31} onClick={() => gridsetMethod(4)} />
+                                <RxDragHandleVertical size={31} onClick={() => gridsetMethod(3)} />
                                 <FaGripLinesVertical size={30} onClick={() => gridsetMethod(2)} />
                                 <TbMinusVertical size={31} onClick={() => gridsetMethod(1)} />
-                                <MdHorizontalSplit size={31} onClick={() => gridsetMethod(1)} />
-                            </div> 
+                                <MdHorizontalSplit size={31} onClick={() => gridsetMethod(4)} />
+                            </div>
                         </div>
                     </div>
-                    <div className='store-result-area p-4 d-grid' style={{gridTemplateColumns:`repeat(${grid},1fr)`}}>
-                            <ProductCard />
-                            <ProductCard />
-                            <ProductCard />
-                            <ProductCard />
+                    <div className='store-result-area p-4 d-grid' style={{ gridTemplateColumns: `repeat(${grid},1fr)`, gap: '1rem' }}>
+                        <ProductCard />
+                        <ProductCard />
+                        <ProductCard />
+                        <ProductCard />
                     </div>
-
                 </div>
             </div>
         </>

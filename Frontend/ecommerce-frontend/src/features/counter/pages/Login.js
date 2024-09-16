@@ -36,7 +36,7 @@ const Login = () => {
 
             />
             <div className="mb-3 text-end">
-              <Link to="forgot-password">
+              <Link to="/forgot-password">
                 Forgot Password?
               </Link>
             </div>

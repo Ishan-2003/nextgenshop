@@ -17,6 +17,7 @@ import brand07 from './Assets/images/brand-07.png';
 import brand08 from './Assets/images/brand-08.png';
 import {Link} from "react-router-dom";
 import ProductCard from '../Components/ProductCard';
+import BlogCard from '../Components/BlogCard';
 const Home = () => {
   return (
     <>
@@ -112,7 +113,13 @@ const Home = () => {
                     </Marquee>
     </div>
     </section>
-    <section className='blog-wrapper py-5'>
+    <section className='blog-wrapper'>
+        <BlogCard/>
+        <BlogCard/>
+        <BlogCard/>
+        <BlogCard/>
+    </section>
+    <section className='py-5'>
         <Container>
         <Row>
             <Col>

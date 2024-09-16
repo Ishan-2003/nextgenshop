@@ -15,6 +15,10 @@ import Toolbar from '@mui/material/Toolbar';
 import Login from './features/counter/pages/Login';
 import Signup from './features/counter/pages/Signup';
 import Forgotpassword from './features/counter/pages/Forgotpassword';
+import SingleProduct from './features/counter/Components/SingleProduct';
+import Cart from './features/counter/pages/Cart';
+import Checkout from './features/counter/pages/Checkout';
+import Resetpassword from './features/counter/pages/Resetpassword';
 
 function App(props) {
   return (
@@ -27,9 +31,13 @@ function App(props) {
             <Route path='about' element={<About />} />
             <Route path='contact' element={<ContactUs />} />
             <Route path='store' element={<Ourstore />} />
+            <Route path='store/:id' element={<SingleProduct />} />
             <Route path='login' element={<Login/>} />
             <Route path='signup' element={<Signup />} />
             <Route path='forgot-password' element={<Forgotpassword />} />
+            <Route path='reset-password' element={<Resetpassword />} />
+            <Route path='cart' element={<Cart />} />
+            <Route path='checkout' element={<Checkout />} />
           </Route>
         </Routes>
       </BrowserRouter>
