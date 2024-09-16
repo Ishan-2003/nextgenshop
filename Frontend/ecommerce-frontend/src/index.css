@@ -20,6 +20,11 @@ body{
     /* min-width: 100vw;
     max-width: 100vw;
     overflow-x: hidden; */
+    display : flex;
+    place-self: center;
+    #root{
+      flex-grow: 1;
+    }
    
 }
 .space-mono-regular {
