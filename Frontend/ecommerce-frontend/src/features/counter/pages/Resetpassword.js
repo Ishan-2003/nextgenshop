@@ -3,7 +3,7 @@ import Template from '../Components/Template';
 import MetaTitle from '../Components/MetaTitle';
 import Button from '@mui/material/Button';
 import CustomInput from "../Components/CustomInput";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const Resetpassword = () => {
