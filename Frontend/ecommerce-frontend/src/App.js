@@ -19,6 +19,7 @@ import SingleProduct from './features/counter/Components/SingleProduct';
 import Cart from './features/counter/pages/Cart';
 import Checkout from './features/counter/pages/Checkout';
 import Resetpassword from './features/counter/pages/Resetpassword';
+import SingleBlog from './features/counter/Components/SingleBlog';
 
 function App(props) {
   return (
@@ -32,6 +33,7 @@ function App(props) {
             <Route path='contact' element={<ContactUs />} />
             <Route path='store' element={<Ourstore />} />
             <Route path='store/:id' element={<SingleProduct />} />
+            <Route path='blog/:id' element={<SingleBlog />} />
             <Route path='login' element={<Login/>} />
             <Route path='signup' element={<Signup />} />
             <Route path='forgot-password' element={<Forgotpassword />} />
