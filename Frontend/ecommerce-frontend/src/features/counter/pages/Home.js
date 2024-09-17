@@ -114,10 +114,24 @@ const Home = () => {
     </div>
     </section>
     <section className='blog-wrapper'>
+    <h3>Featured Collection</h3>
+    <div className='blog-cards' style={{gridTemplateColumns:'repeat(6,1fr)'}}>
+        <ProductCard/>
+        <ProductCard/>
+        <ProductCard/>
+        <ProductCard/>
+        <ProductCard/>
+        <ProductCard/>
+    </div>
+    </section>
+    <section className='blog-wrapper'>
+    <h3>Our Blogs</h3>
+    <div className='blog-cards'>
         <BlogCard/>
         <BlogCard/>
         <BlogCard/>
         <BlogCard/>
+    </div>
     </section>
     <section className='py-5'>
         <Container>
@@ -134,7 +148,7 @@ const Home = () => {
         </Row>
 
         </Container>
-    </section>
+    </section> 
     </>
   )
 }
