@@ -9,6 +9,7 @@ import { MdHorizontalSplit } from "react-icons/md";
 import ProductCard from '../Components/ProductCard';
 import { Box, MenuItem, TextField } from '@mui/material';
 import { ColorPicker } from 'mui-color';
+// import { ColorPicker } from 'mui-color';
 
 function valuetext(value) {
     return `${value}°C`;
