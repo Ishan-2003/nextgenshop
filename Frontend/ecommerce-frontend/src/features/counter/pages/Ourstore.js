@@ -7,6 +7,8 @@ import { TbMinusVertical } from "react-icons/tb";
 import { RxDragHandleVertical } from "react-icons/rx";
 import { MdHorizontalSplit } from "react-icons/md";
 import ProductCard from '../Components/ProductCard';
+import { Box, MenuItem, TextField } from '@mui/material';
+import { ColorPicker } from 'mui-color';
 
 function valuetext(value) {
     return `${value}°C`;
@@ -17,6 +19,36 @@ const Ourstore = () => {
     const gridsetMethod = async (numCols) => {
         setgrid(numCols);
     }
+
+    const currencies = [
+  {
+    value: 'USD',
+    label: '$ - Dollars',
+  },
+  {
+    value: 'EUR',
+    label: '€ - Euro',
+  },
+  {
+    value: 'BTC',
+    label: '฿ - Pounds',
+  },
+  {
+    value: 'JPY',
+    label: '¥ - Yen',
+  },
+];
+
+function valuetext(value) {
+  return `${value}°C`;
+}
+
+const [value, setValue] = React.useState([20, 37]);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
     // if(gridsetMethod) alert(grid)
     return (
         <>
@@ -37,45 +69,76 @@ const Ourstore = () => {
                     </div>
                     <div className='stock-filter-list'>
                         <h3>
-                            Filter By Lot
+                            Filter By
                         </h3>
-                        <div>
-                            <div>
-                                <label htmlFor='uncheck'>
-                                    In Stock - 1.
-                                </label>
+                        <div className='d-grid g-2'>
+                            <h5>Availability</h5>
+                            <div className='filter-input'>
                                 <input className='checked-input' type='checkbox' value="" id="uncheck" />
-                            </div>
-                            <div>
-                                <label htmlFor='checked'>
-                                    Out of Stock - 2.
+                                <label htmlFor='uncheck'>
+                                    In Stock (1)
                                 </label>
+                            </div>
+                            <div className='filter-input'>
                                 <input className='checked-input' type='checkbox' value="" id="checked" />
+                                <label htmlFor='checked'>
+                                    Out of Stock (2)
+                                </label>
                             </div>
 
                         </div>
                         <div className='Price-input'>
                             <h5>Price</h5>
                             <Slider
-                                aria-label="Temperature"
-                                defaultValue={30}
-                                getAriaValueText={valuetext}
-                                valueLabelDisplay="auto"
-                                shiftStep={30}
-                                step={10}
-                                marks
-                                min={10}
-                                max={110}
-                            />
+  getAriaLabel={() => 'Temperature range'}
+  value={value}
+  onChange={handleChange}
+  valueLabelDisplay='auto'
+  getAriaValueText={valuetext}
+
+//   valueLabelFormat={value => `From : {value*100}`}
+/>
+           
+            <Box
+      component="form"
+      sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }}
+      noValidate
+      autoComplete="off"
+    >
+                 <TextField
+          id="standard-select-currency"
+          select
+          label="Select"
+          defaultValue="EUR"
+          helperText="Please select your currency"
+          variant="standard"
+        >
+          {currencies.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+
+    </Box>
+
                         </div>
                         <div className='Color-input'>
                             <h5>Color</h5>
-                            <div className=''>
-
+                            <div className='color-picker'>
+                            <ColorPicker defaultValue="Type Color"/>
                             </div>
                         </div>
                     </div>
-                    <div>Product Tags</div>
+                    <div className='product-tag'>
+                        <h5>Product Tag</h5>
+                        <div className='d-flex flex-wrap align-items-center row-gap-2 column-gap-3'>
+                        <div className=' text-secondary rounded-4 py-2 px-2' style={{backgroundColor:'rgb(232, 232, 232)'}}>Headphone</div>
+                        <div className=' text-secondary rounded-4 py-2 px-2' style={{backgroundColor:'rgb(232, 232, 232)'}}>Device</div>
+                        <div className=' text-secondary rounded-4 py-2 px-2' style={{backgroundColor:'rgb(232, 232, 232)'}}>Listen</div>
+                        <div className=' text-secondary rounded-4 py-2 px-2' style={{backgroundColor:'rgb(232, 232, 232)'}}>Microphone</div>
+                        </div>
+                    </div>
                     <div>Arbitrary Product Filter</div>
                 </div>
                 <div className='store-res-wrapper'>

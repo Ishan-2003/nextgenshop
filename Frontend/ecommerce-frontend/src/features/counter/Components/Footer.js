@@ -30,6 +30,16 @@ const Footer = () => {
 
                     </div>
                     </Col>
+                    <Col md = {4}>
+                    <h5>Information</h5>
+                    <Nav className="flex-column">
+                            <Nav.Link href="/privacypolicy">Privacy Policy</Nav.Link>
+                            <Nav.Link href="/refundpolicy">Refund Policy</Nav.Link>
+                            <Nav.Link href="/shippingpolicy">Shipping Policy</Nav.Link>
+                            <Nav.Link href="/termscondition">Terms & Conditions</Nav.Link>
+                            <Nav.Link href="/blogs">Blogs</Nav.Link>
+                        </Nav>
+                    </Col>
                     <Col md={4}>
                     <div>
                         <h5>Follow Us</h5>

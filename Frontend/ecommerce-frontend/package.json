@@ -17,7 +17,9 @@
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "easy-magnify": "^1.1.4",
+    "material-ui-color-picker": "^3.5.1",
     "mdb-react-ui-kit": "^8.0.0",
+    "mui-color": "^2.0.0-beta.2",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.4",
     "react-dom": "^18.3.1",
@@ -29,6 +31,7 @@
     "react-scripts": "5.0.1",
     "react-stars": "^2.2.5",
     "reactjs-flip-card": "^2.0.3",
+    "redux-form": "^8.3.10",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

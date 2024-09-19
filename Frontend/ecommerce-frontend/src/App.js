@@ -20,6 +20,10 @@ import Cart from './features/counter/pages/Cart';
 import Checkout from './features/counter/pages/Checkout';
 import Resetpassword from './features/counter/pages/Resetpassword';
 import SingleBlog from './features/counter/Components/SingleBlog';
+import RefundPolicy from './features/counter/Components/RefundPolicy';
+import ShippingPolicy from './features/counter/Components/ShippingPolicy';
+import PrivacyPolicy from './features/counter/Components/PrivacyPolicy';
+import TermandConditions from './features/counter/Components/TermandConditions';
 
 function App(props) {
   return (
@@ -40,6 +44,10 @@ function App(props) {
             <Route path='reset-password' element={<Resetpassword />} />
             <Route path='cart' element={<Cart />} />
             <Route path='checkout' element={<Checkout />} />
+            <Route path='termsconditions' element={<TermandConditions />} />
+            <Route path='refundpolicy' element={<RefundPolicy />} />
+            <Route path='shippingpolicy' element={<ShippingPolicy />} />
+            <Route path='privacypolicy' element={<PrivacyPolicy />} />
           </Route>
         </Routes>
       </BrowserRouter>
