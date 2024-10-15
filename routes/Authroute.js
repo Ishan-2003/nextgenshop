@@ -14,7 +14,7 @@ router.post("/login", login_usercntrl);
 router.get("/all_users", get_all_user);
 router.get("/refresh", handle_refresh_token);
 router.get("/logouts",logout);
-router.get("/:id", authmiddleware, is_Admin, get_single_user);
+router.get("/:id", authmiddleware, get_single_user);
 router.delete("/:id", delete_single_user);
 router.put("/edit_user/:id", authmiddleware, update_single_user);
 router.put("/block_user/:id", authmiddleware, is_Admin, block_a_user);

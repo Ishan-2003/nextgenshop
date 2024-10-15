@@ -1,331 +1,103 @@
-// import React, { useState } from 'react';
-// import {
-//   MenuFoldOutlined,
-//   MenuUnfoldOutlined,
-//   UploadOutlined,
-//   UserOutlined,
-//   VideoCameraOutlined,
-// } from '@ant-design/icons';
-// import { Button, Layout, Menu, theme } from 'antd';
-// const { Header, Sider, Content } = Layout;
-// const Masterlayout= () => {
-//   const [collapsed, setCollapsed] = useState(1);
-//   const {
-//     token: { colorBgContainer, borderRadiusLG },
-//   } = theme.useToken();
-//   return (
-//     <Layout>
-//       <Sider trigger={null} collapsible collapsed={collapsed}>
-//         <div className="demo-logo-vertical" />
-//         <Menu
-//           theme="dark"
-//           mode="inline"
-//           defaultSelectedKeys={['1']}
-//           items={[
-//             {
-//               key: '1',
-//               icon: <UserOutlined />,
-//               label: 'nav 1',
-//               onMouseDown: ()=>{if(collapsed) setCollapsed(!collapsed)}
-//             },
-//             {
-//               key: '2',
-//               icon: <VideoCameraOutlined />,
-//               label: 'nav 2',
-//               onMouseDown: ()=>{if(collapsed) setCollapsed(!collapsed)}
-//             },
-//             {
-//               key: '3',
-//               icon: <UploadOutlined />,
-//               label: 'nav 3',
-//               onMouseDown: ()=>{if(collapsed) setCollapsed(!collapsed)}
-//             },
-//           ]}
-//         />
-//       </Sider>
-//       <Layout>
-//         <Header
-//           style={{
-//             padding: 0,
-//             background: colorBgContainer,
-//           }}
-//         >
-//           <Button
-//             type="text"
-//             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-//             onClick={() => setCollapsed(!collapsed)}
-//             style={{
-//               fontSize: '16px',
-//               width: 64,
-//               height: 64,
-//             }}
-//           />
-//         </Header>
-//         <Content
-//           style={{
-//             margin: '24px 16px',
-//             padding: 24,
-//             minHeight: 280,
-//             background: colorBgContainer,
-//             borderRadius: borderRadiusLG,
-//           }}
-//         >
-//           Content
-//         </Content>
-//       </Layout>
-//     </Layout>
-//   );
-// };
-// export default Masterlayout;
-//------------------------------------------------------------------------------------
-import React, { useState } from "react";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import {
-  AiOutlineDashboard,
-  AiOutlineShoppingCart,
-  AiOutlineUser,
-  AiOutlineBgColors,
-} from "react-icons/ai";
-import { RiCouponLine } from "react-icons/ri";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { Link } from "react-router-dom";
-import { Outlet } from "react-router-dom";
-import { ImBlog } from "react-icons/im";
-import { IoIosNotifications } from "react-icons/io";
-import { FaClipboardList, FaBloggerB } from "react-icons/fa";
-import { SiBrandfolder } from "react-icons/si";
-import { BiCategoryAlt } from "react-icons/bi";
-import { Layout, Menu, theme } from "antd";
-import { useNavigate } from "react-router-dom";
-const { Header, Sider, Content } = Layout;
-const MainLayout = () => {
-  const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
-  const navigate = useNavigate();
+import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from "react-pro-sidebar";
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import GridViewRoundedIcon from "@mui/icons-material/GridViewRounded";
+// import ReceiptRoundedIcon from "@mui/icons-material/ReceiptRounded";
+// import BarChartRoundedIcon from "@mui/icons-material/BarChartRounded";
+// import TimelineRoundedIcon from "@mui/icons-material/TimelineRounded";
+// import BubbleChartRoundedIcon from "@mui/icons-material/BubbleChartRounded";
+import CategoryIcon from '@mui/icons-material/Category';
+import SegmentIcon from '@mui/icons-material/Segment';
+import PeopleIcon from '@mui/icons-material/People';
+import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+import Inventory2Icon from '@mui/icons-material/Inventory2';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import BrandingWatermarkIcon from '@mui/icons-material/BrandingWatermark';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import { FaBlog } from "react-icons/fa6";
+import { ImBlog } from "react-icons/im"
+import { Link, Outlet } from "react-router-dom";
+// import React, { useState } from "react";
+import image from "../Assets/images/full-scott-adkins.jpg"
+import ColorLensRoundedIcon from '@mui/icons-material/ColorLensRounded';
+// import { Fragment } from "react";
+const App = () => {
+  const { collapseSidebar } = useProSidebar();
   return (
-    <Layout /* onContextMenu={(e) => e.preventDefault()} */>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="logo">
-          <h2 className="text-white fs-5 text-center py-3 mb-0">
-            <span className="sm-logo">DC</span>
-            <span className="lg-logo">Dev Corner</span>
-          </h2>
-        </div>
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={[""]}
-          onClick={({ key }) => {
-            if (key === "signout") {
-            } else {
-              navigate(key);
-            }
-          }}
-          items={[
-            {
-              key: "",
-              icon: <AiOutlineDashboard className="fs-4" />,
-              label: "Dashboard",
-            },
-            {
-              key: "customers",
-              icon: <AiOutlineUser className="fs-4" />,
-              label: "Customers",
-            },
-            {
-              key: "Catalog",
-              icon: <AiOutlineShoppingCart className="fs-4" />,
-              label: "Catalog",
-              children: [
-                {
-                  key: "product",
-                  icon: <AiOutlineShoppingCart className="fs-4" />,
-                  label: "Add Product",
-                },
-                {
-                  key: "list-product",
-                  icon: <AiOutlineShoppingCart className="fs-4" />,
-                  label: "Product List",
-                },
-                {
-                  key: "brand",
-                  icon: <SiBrandfolder className="fs-4" />,
-                  label: "Brand",
-                },
-                {
-                  key: "list-brand",
-                  icon: <SiBrandfolder className="fs-4" />,
-                  label: "Brand List ",
-                },
-                {
-                  key: "category",
-                  icon: <BiCategoryAlt className="fs-4" />,
-                  label: "Category",
-                },
-                {
-                  key: "list-category",
-                  icon: <BiCategoryAlt className="fs-4" />,
-                  label: "Category List",
-                },
-                {
-                  key: "color",
-                  icon: <AiOutlineBgColors className="fs-4" />,
-                  label: "Color",
-                },
-                {
-                  key: "list-color",
-                  icon: <AiOutlineBgColors className="fs-4" />,
-                  label: "Color List",
-                },
-              ],
-            },
-            {
-              key: "orders",
-              icon: <FaClipboardList className="fs-4" />,
-              label: "Orders",
-            },
-            {
-              key: "marketing",
-              icon: <RiCouponLine className="fs-4" />,
-              label: "Marketing",
-              children: [
-                {
-                  key: "coupon",
-                  icon: <ImBlog className="fs-4" />,
-                  label: "Add Coupon",
-                },
-                {
-                  key: "coupon-list",
-                  icon: <RiCouponLine className="fs-4" />,
-                  label: "Coupon List",
-                },
-              ],
-            },
-            {
-              key: "blogs",
-              icon: <FaBloggerB className="fs-4" />,
-              label: "Blogs",
-              children: [
-                {
-                  key: "blog",
-                  icon: <ImBlog className="fs-4" />,
-                  label: "Add Blog",
-                },
-                {
-                  key: "blog-list",
-                  icon: <FaBloggerB className="fs-4" />,
-                  label: "Blog List",
-                },
-                {
-                  key: "blog-category",
-                  icon: <ImBlog className="fs-4" />,
-                  label: "Add Blog Category",
-                },
-                {
-                  key: "blog-category-list",
-                  icon: <FaBloggerB className="fs-4" />,
-                  label: "Blog Category List",
-                },
-              ],
-            },
-            {
-              key: "enquiries",
-              icon: <FaClipboardList className="fs-4" />,
-              label: "Enquiries",
-            },
-          ]}
-        />
-      </Sider>
-      <Layout className="site-layout">
-        <Header
-          className="d-flex justify-content-between ps-1 pe-5"
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-          }}
-        >
-          {React.createElement(
-            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-            {
-              className: "trigger",
-              onClick: () => setCollapsed(!collapsed),
-            }
-          )}
-          <div className="d-flex gap-4 align-items-center">
-            <div className="position-relative">
-              <IoIosNotifications className="fs-4" />
-              <span className="badge bg-warning rounded-circle p-1 position-absolute">
-                3
-              </span>
-            </div>
+    <div className="admin-master-layout">
+      <Sidebar className="admin-sidebar">
+        <Menu>
+          <div id="hamburger">
+            <MenuItem
+              component={<Link to="" className="link" />}
+              icon={<MenuRoundedIcon style={{ color: "black"}} />}
+              onClick={() => {
+                collapseSidebar();
+              }}
+            >
+              Admin
+            </MenuItem>
 
-            <div className="d-flex gap-3 align-items-center dropdown">
-              <div>
-                <img
-                  width={32}
-                  height={32}
-                  src="https://stroyka-admin.html.themeforest.scompiler.ru/variants/ltr/images/customers/customer-4-64x64.jpg"
-                  alt=""
-                />
-              </div>
-              <div
-                role="button"
-                id="dropdownMenuLink"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <h5 className="mb-0">Navdeep</h5>
-                <p className="mb-0">navdeepdahiya753@gmail.com</p>
-              </div>
-              <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li>
-                  <Link
-                    className="dropdown-item py-1 mb-1"
-                    style={{ height: "auto", lineHeight: "20px" }}
-                    to="/"
-                  >
-                    View Profile
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="dropdown-item py-1 mb-1"
-                    style={{ height: "auto", lineHeight: "20px" }}
-                    to="/"
-                  >
-                    Signout
-                  </Link>
-                </li>
-              </div>
+          </div>
+          <MenuItem
+            component={<Link to="dashboard" className="link" />}
+            icon={<GridViewRoundedIcon style={{ color: "black" }} />}>
+            Dashboard
+          </MenuItem>
+          <MenuItem component={<Link to="customer" className="link" />} icon={<PeopleIcon style={{ color: "black" }} />}>
+            Customers
+          </MenuItem>
+          <SubMenu label="Catalog" icon={<ShoppingCartIcon style={{ color: "black" }} />} key="Catalog">
+            <MenuItem component={<Link to="product" className="link" />} icon={<Inventory2Icon style={{ color: "black" }} />} className="subitem">Add Product </MenuItem>
+            <MenuItem component={<Link to="product-list" className="link" />} icon={<SegmentIcon style={{ color: "black" }} />} className="subitem"> Product List </MenuItem>
+            <MenuItem component={<Link to="category" className="link" />} icon={<BrandingWatermarkIcon style={{ color: "black" }} />} className="subitem"> Brand </MenuItem>
+            <MenuItem component={<Link to="category-list" className="link" />} icon={<SegmentIcon style={{ color: "black" }} />} className="subitem"> Brand List</MenuItem>
+            <MenuItem component={<Link to="category" className="link" />} icon={<CategoryIcon style={{ color: "black" }} />} className="subitem"> Category</MenuItem>
+            <MenuItem component={<Link to="category-list" className="link" />} icon={<SegmentIcon style={{ color: "black" }} />} className="subitem"> Category List</MenuItem>
+            <MenuItem component={<Link to="color" className="link" />} icon={<ColorLensRoundedIcon style={{ color: "black" }} />} className="subitem"> Color</MenuItem>
+            <MenuItem component={<Link to="color-list" className="link" />} icon={<SegmentIcon style={{ color: "black" }} />} className="subitem"> Color List</MenuItem>
+          </SubMenu>
+          <MenuItem component={<Link to="order" className="link" />} icon={<LocalShippingIcon style={{ color: "black" }} />}>
+            Orders
+          </MenuItem>
+          <SubMenu label="Blogs" icon={<FaBlog fontSize="22px" style={{ color: "black" }} />}>
+            <MenuItem component={<Link to="blog" className="link" />} icon={<ImBlog style={{ color: "black" }} />} className="subitem"> Add Blog</MenuItem>
+            <MenuItem component={<Link to="blog-list" className="link" />} icon={<FaBlog style={{ color: "black" }} />} className="subitem"> Blog List</MenuItem>
+            <MenuItem component={<Link to="blog-category" className="link" />} icon={<ImBlog style={{ color: "black" }} />} className="subitem">Add Blog Category</MenuItem>
+            <MenuItem component={<Link to="blog-category-list" className="link" />} icon={<FaBlog style={{ color: "black" }} />} className="subitem"> Blog Category List</MenuItem>
+
+          </SubMenu>
+          <MenuItem component={<Link to="enquirie" className="link" />} icon={<SupportAgentIcon style={{ color: "black" }} />}>
+            Enquiries
+          </MenuItem>
+          <MenuItem component={<Link to="logout" className="link" />} icon={<LogoutRoundedIcon style={{ color: "black" }} />}> Logout </MenuItem>
+        </Menu>
+      </Sidebar>
+      <div className="admin-main-layout">
+
+        <header className="admin-nav">
+          <div>
+            <h1>LOGO</h1>
+          </div>
+          <div className="sign-in-info">
+            <div className="admin-nav-img">
+              <img src={image} alt="" />
+            </div>
+            <div>
+              <h3>Ishan</h3>
+              <p>Email : 21bcs022@nith.ac.in</p>
             </div>
           </div>
-        </Header>
-        <Content
-          style={{
-            margin: "24px 16px",
-            padding: 24,
-            minHeight: 280,
-            background: colorBgContainer,
-          }}
-        >
-          <ToastContainer
-            position="top-right"
-            autoClose={250}
-            hideProgressBar={false}
-            newestOnTop={true}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            theme="light"
-          />
-          <Outlet />
-        </Content>
-      </Layout>
-    </Layout>
+        </header>
+        <section>
+          <div className="outlet">
+            <Outlet />
+          </div>
+        </section>
+
+      </div>
+
+    </div>
   );
 };
-export default MainLayout;
+export default App;

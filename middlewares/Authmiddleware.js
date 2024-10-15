@@ -6,6 +6,7 @@ const asynchandler = require("express-async-handler");
 
 const authmiddleware = asynchandler(async (req, res, next) => {
     let token;
+    
     if (req?.headers?.authorization?.startsWith("Bearer")) {
         token = req.headers.authorization.split(" ")[1];//get second val of token array
         try {
@@ -13,6 +14,7 @@ const authmiddleware = asynchandler(async (req, res, next) => {
                 const decoded = jwt.verify(token, process.env.JWT_PRIVATEKEY);
                 const user = await User.findById(decoded?.id);
                 req.user = user;
+                // console.log(user._id)
                 next();
             }
         }

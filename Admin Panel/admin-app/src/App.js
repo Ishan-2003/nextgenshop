@@ -5,9 +5,11 @@ import Dashboard from './Pages/Dashboard'
 import Forgotpassword from './Pages/Forgotpassword'
 import Login from './Pages/Login'
 import Resetpassword from './Pages/Resetpassword'
+import { ProSidebarProvider } from 'react-pro-sidebar';
 function App() {
   return (
     <Router>
+    <ProSidebarProvider>
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/forgot-password' element={<Forgotpassword />} />
@@ -16,6 +18,7 @@ function App() {
           <Route index element={<Dashboard />} />
         </Route>
       </Routes>
+    </ProSidebarProvider>
     </Router>
   );
 }

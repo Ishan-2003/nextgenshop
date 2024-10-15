@@ -1,6 +1,7 @@
 const mongoose = require('mongoose'); // Erase if already required
 const bcrypt = require('bcrypt');//for pasword encriptio
 const crypto = require('crypto');
+const Product = require('../models/Productmodel')
 // Declare the Schema of the Mongo model
 var userSchema = new mongoose.Schema({
     firstname: {
@@ -40,7 +41,7 @@ var userSchema = new mongoose.Schema({
         default: [],
     },
     address: [{ type: mongoose.Schema.Types.ObjectId, ref: "Address" }],
-    wishlist: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
+    wishlist: [{ type: Map,of : Product}],
     refreshToken: {
         type: String,
     },

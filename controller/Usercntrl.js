@@ -11,13 +11,17 @@ const crypto = require('crypto');
 const createUser = asynchandler(async (req, res) => {
     const email = req.body.email;
     const finduser = await User.findOne({ email });
+
     if (!finduser) {
+        // console.log('success')
         //createUser
         const newUser = await User.create(req.body);
         res.json({ newUser, "msg": "User Created" });
     }
     else {
+        // console.log('user created')
         throw new Error("User Already Exists");
+        // res.json({'msg':'User Already Exists'})
         // res.json({
         //     Message : "User Already Exists",
         //     success : false,
@@ -131,11 +135,13 @@ const get_all_user = asynchandler(async (req, res) => {
 
 const get_single_user = asynchandler(async (req, res) => {
     const { id } = req.params;
-    validate_mongodb_id(id);
+    // console.log(id);
+    validate_mongodb_id('here');
 
     // console.log({ id });
     try {
         const get_a_user = await User.findById(id);
+        // console.log(get_a_user);
         res.json({
             get_a_user,
         })

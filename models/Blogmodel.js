@@ -46,7 +46,7 @@ var blogSchema = new mongoose.Schema(
     },
     images: {
         type : String,
-        default : "https://www.shutterstock.com/image-photo/bloggingblog-concepts-ideas-white-worktable-1029506242"
+        default : "https://www.shutterstock.com/shutterstock/photos/1029506242/display_1500/stock-photo-blogging-blog-concepts-ideas-with-white-worktable-1029506242.jpg"
     },
   },
   {

@@ -116,26 +116,28 @@ const getALLproducts = asynchandler(async (req, res) => {
 
 const add_to_wishlist = asynchandler(async (req, res) => {
     const { _id } = req.user;
-    const { prod_id } = req.body;
+    const { prodId } = req.body;
+    const {prod} = req.body;
+    console.log('here is')
     try {
         const userr = await User.findById(_id);
-        const already_added = userr.wishlist.find((id) => id.toString() === prod_id);
-        console.log('here');
+        const already_added = userr.wishlist.find((id) => id.toString() === prodId);
+     
         if (already_added) {
             let user = await User.findByIdAndUpdate(_id,
                 {
-                    $pull: { wishlist: prod_id },
+                    $pull: { wishlist: prod },
                 },
                 {
                     new: true,
                 }
             );
-            res.json(user);
+            res.json(user); 
         }
         else {
             let user = await User.findByIdAndUpdate(_id,
                 {
-                    $push: { wishlist: prod_id },
+                    $push: { wishlist: prod },
                 },
                 {
                     new: true,

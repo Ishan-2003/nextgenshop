@@ -1,6 +1,6 @@
 import React from 'react'
-import Template from '../Components/Template';
-import MetaTitle from '../Components/MetaTitle';
+import Template from './Template';
+import MetaTitle from './MetaTitle';
 import { Link } from 'react-router-dom';
 import blogImage from '../pages/Assets/images/blog-1.jpg'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
