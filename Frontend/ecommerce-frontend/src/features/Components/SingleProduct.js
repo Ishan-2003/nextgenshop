@@ -12,10 +12,14 @@ const SingleProduct = () => {
   const location = useLocation();
   const getProduct_id = location.pathname.split('/')[2];
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getSingleProduct(getProduct_id));
   }, []);
   const fetchedProduct = useSelector((state)=>state.product)
+  const insertCart = ()=>{
+
+  }
   console.log(fetchedProduct);
   return (
     <div>
@@ -53,7 +57,22 @@ const SingleProduct = () => {
 
         </div>
         <div className='main-prod-desc'>
-            <p>{fetchedProduct?.product?.description}</p>
+            {/* <p>{fetchedProduct?.product?.description}</p> */}
+            <h5>Product description heading</h5>
+            <div className='BOTTOM'></div>
+            <div className='d-grid py-3' style={{gridTemplateRows:'repeat(3,max-content)',gap:'0rem',alignItems:'center'}}>
+            <p className='fw-bolder fs-6'>$500</p>
+            <div className='d-grid' style={{gridTemplateRows:'repeat(2,max-content)',gap:'0rem'}}>
+            <div className='d-grid' style={{gridTemplateColumns:'repeat(2,max-content)',gap:'0.6rem',justifyItems:'center'}}>
+            <ReactStars/>
+            <p>
+            (2 reviews)
+            </p>
+            </div>
+            <p>write review</p>
+            </div>
+            </div>
+            <div className='BOTTOM'></div>
         </div>
         </div>
         <div className='Product-description'>

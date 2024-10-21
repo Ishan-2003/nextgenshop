@@ -40,6 +40,15 @@ export const getUserProductWishlist = createAsyncThunk(':id/Wishlist',async(id,t
     }
 })
 
+export const addProductToCart = createAsyncThunk('/cart',async(cartData,thunkAPI)=>{
+    try {
+        return authService.addToCart(cartData);
+    } catch (error) {
+        // console.log('here')
+        return thunkAPI.rejectWithValue(error);
+    }
+})
+
 
 export const authSlice = createSlice({
     name : 'auth',
@@ -59,7 +68,7 @@ export const authSlice = createSlice({
             
         }).addCase(registerUser.rejected,(state,action)=>{
             state.isLoading = false
-            state.isError = false
+            state.isError = true
             state.isSuccess = false
             state.message = action.error
             // console.log(action)
@@ -80,7 +89,7 @@ export const authSlice = createSlice({
             
         }).addCase(loginUser.rejected,(state,action)=>{
             state.isLoading = false
-            state.isError = false
+            state.isError = true
             state.isSuccess = false
             state.message = action.error
             // console.log(action)
@@ -97,9 +106,24 @@ export const authSlice = createSlice({
             
         }).addCase(getUserProductWishlist.rejected,(state,action)=>{
             state.isLoading = false
-            state.isError = false
+            state.isError = true
             state.isSuccess = false
             state.message = action.error
+        })
+        .addCase(addProductToCart.pending,(state)=>{
+            state.isLoading = true
+        })
+        .addCase(addProductToCart.fulfilled,(state,action)=>{
+            state.isLoading = false
+            state.isError = false
+            state.isSuccess = true
+            state.addedCartProduct = action.payload
+            
+        }).addCase(addProductToCart.rejected,(state,action)=>{
+            state.isLoading = false
+            state.isError = true
+            state.isSuccess = false
+            state.message = action.msg
         })
     }
 })

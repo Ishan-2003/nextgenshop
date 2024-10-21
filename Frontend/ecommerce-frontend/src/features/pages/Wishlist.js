@@ -10,7 +10,7 @@ const Wishlist = () => {
     const dispatch = useDispatch()
 const user = getUserfromLocalStorage;
 const getuserProductwishlist = ()=>{
-    dispatch(getUserProductWishlist(user._id));
+    dispatch(getUserProductWishlist(user?._id));
 }
 const prodWishlist = useSelector((state)=>state.auth.productWishlist);
 // console.log(prodWishlist)

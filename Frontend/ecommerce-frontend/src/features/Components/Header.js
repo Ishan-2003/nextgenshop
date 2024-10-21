@@ -52,6 +52,25 @@ const Header = () => {
         />
                              Login
                         </Nav.Link>
+                        
+                        <Nav.Link href="/signup">
+                        <ReactFlipCard
+            frontStyle={styles.card}
+            backStyle={styles.card}
+            frontComponent={<i className="fas fa-user"></i>}
+            backComponent={<i className="fas fa-user"></i>}
+        />
+                             Signup
+                        </Nav.Link>
+                        <Nav.Link href="/wishlist">
+                        <ReactFlipCard
+            frontStyle={styles.card}
+            backStyle={styles.card}
+            frontComponent={<i className="fas fa-user"></i>}
+            backComponent={<i className="fas fa-user"></i>}
+        />
+                             Wishlist
+                        </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

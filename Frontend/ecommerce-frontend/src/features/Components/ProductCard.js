@@ -10,6 +10,9 @@ import { AddToWishlist } from '../Products/ProductSlice';
 const ProductCard = ({ data , grid, remove}) => {
   const product = data;
   const dispatch = useDispatch();
+  const removeFromWishlist = ()=>{
+    dispatch();
+  }
   const addToWishlist = (prod)=>{
     // alert(prodId);
     // alert(userId);
@@ -70,7 +73,7 @@ const ProductCard = ({ data , grid, remove}) => {
           <LocalMallOutlinedIcon/>
         </Link>}
     </div>
-    {remove&&<div className='cross'>
+    {remove&&<div className='cross' onClick={()=>removeFromWishlist()}>
       <img src='https://th.bing.com/th/id/OIP.xHn4P14c-FSSF59QpadUWQAAAA?rs=1&pid=ImgDetMain' alt='delete'/>
     </div>}
     </div>

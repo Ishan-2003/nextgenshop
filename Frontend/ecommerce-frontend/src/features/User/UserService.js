@@ -17,11 +17,22 @@ const loginUser = async (userdata) => {
 const getUserProdWishlist = async(id)=>{
     const response = await axios.get(`${base_url}User/${id}`,authConfig);
     // console.log(response.data.get_a_user.wishlist)
-    return response.data.get_a_user.wishlist;
+    if(response.data) return response.data.get_a_user.wishlist;
+    return {msg:'Wishlist err!!!'}
 }
+ 
+const addToCart = async(cartData)=>{
+    const response = await axios.post(`${base_url}User/cart`,cartData,authConfig);
+    // console.log(response.data.get_a_user.wishlist)
+    if(response.data) return response.data;
+    return {msg:'Cart err !!!'}
+}
+
+
 
 export const authService = {
     registerUser,
     loginUser,
-    getUserProdWishlist
+    getUserProdWishlist,
+    addToCart
 }

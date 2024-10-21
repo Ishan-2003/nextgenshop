@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 // import { toast } from "react-toastify";
 import { productService } from "./ProductService";
 // import { fabClasses } from "@mui/material";
+import { toast } from "react-toastify";
 
 const initialState = {
     user : '',
@@ -40,6 +41,8 @@ export const AddToWishlist = createAsyncThunk('product/wishlist',async(prod,thun
         return thunkAPI.rejectWithValue(error);
     }
 })
+
+export const removeWishlistproduct = createAsyncThunk('product/')
 
 
 export const productSlice = createSlice({
@@ -88,12 +91,14 @@ export const productSlice = createSlice({
             state.isError = false
             state.addtowishlist = action.payload
             state.message = 'Product added to Wishlist (200--OK)'
+            toast.success('Product added successfully')
         })
         .addCase(AddToWishlist.rejected,(state,action)=>{
             state.isError = true
             state.isLoading = false
             state.isSuccess = false
             state.errorMessage = action.error
+            toast.error(`${action.error}`);
         })
     }
 })

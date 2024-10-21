@@ -1,5 +1,6 @@
 const { gen_token } = require("../config/jwtToken");
 const User = require("../models/Usermodel");
+const Cart = require('../models/CartModel');
 const asynchandler = require("express-async-handler");
 const validate_mongodb_id = require("../utils/validate_MongoDBid");
 const { gen_refresh_token } = require("../config/refreshtoken");
@@ -136,7 +137,7 @@ const get_all_user = asynchandler(async (req, res) => {
 const get_single_user = asynchandler(async (req, res) => {
     const { id } = req.params;
     // console.log(id);
-    validate_mongodb_id('here');
+    validate_mongodb_id(id);
 
     // console.log({ id });
     try {
@@ -153,9 +154,9 @@ const get_single_user = asynchandler(async (req, res) => {
 //3. delete a user
 
 const delete_single_user = asynchandler(async (req, res) => {
-    const { id } = req.params;
-    validate_mongodb_id(id);
-
+    const { _id } = req.params;
+    validate_mongodb_id(_id);
+    // console.log(req);
     // console.log({ id });
     try {
         const delete_a_user = await User.findByIdAndDelete(id);
@@ -293,12 +294,34 @@ const get_my_orders = asynchandler(async(req,res)=>{
     const {_id} = req.user;
     try{
         // const orders = await Order.find({user_id})
-
     }
     catch(err){}
 }
 )
 
+const CartHandle = asynchandler(async(req,res)=>{
+    const {productId,color,quantity,price} = req.body;
+    const {_id} = req.user;
+    console.log(req);
+    validate_mongodb_id(_id);
+    try{
+        let newCart = await new Cart(
+            {
+                userId:_id,
+                productId,
+                quantity,
+                price,
+                color
+            }
+        ).save();
+        // console.log(newCart);
+        res.status(200).json(newCart);
+    }
+    catch(err){
+        console.log('cart not Created!!!')
+    }
+})
+
 //from now on we verify mongodb id
 
-module.exports = { createUser, login_usercntrl, get_all_user, get_single_user, delete_single_user, update_single_user, block_a_user, unblock_a_user, handle_refresh_token, logout, update_password, fogotPasswordToken ,reset_Password};
+module.exports = { createUser, login_usercntrl, get_all_user, get_single_user, delete_single_user, update_single_user, block_a_user, unblock_a_user, handle_refresh_token, logout, update_password, fogotPasswordToken ,reset_Password , CartHandle};
