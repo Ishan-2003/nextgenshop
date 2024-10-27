@@ -6,7 +6,7 @@ const asynchandler = require("express-async-handler");
 
 const authmiddleware = asynchandler(async (req, res, next) => {
     let token;
-    
+    // console.log(req.headers);
     if (req?.headers?.authorization?.startsWith("Bearer")) {
         token = req.headers.authorization.split(" ")[1];//get second val of token array
         try {
@@ -23,6 +23,7 @@ const authmiddleware = asynchandler(async (req, res, next) => {
         }
     }
     else {
+        // console.log('token not found')
         throw new Error("No token attached to header");
     }
 });

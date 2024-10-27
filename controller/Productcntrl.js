@@ -118,26 +118,22 @@ const add_to_wishlist = asynchandler(async (req, res) => {
     const { _id } = req.user;
     const { prodId } = req.body;
     const {prod} = req.body;
-    console.log('here is')
+    // console.log(prodId);
+    // const { prod } = req.body;
+    // console.log('here is')
     try {
         const userr = await User.findById(_id);
-        const already_added = userr.wishlist.find((id) => id.toString() === prodId);
-     
+        // console.log(userr.wishlist[0].get('prod')._id);
+        const already_added = userr.wishlist.find((item) => (item.get('_id') === prodId));
         if (already_added) {
-            let user = await User.findByIdAndUpdate(_id,
-                {
-                    $pull: { wishlist: prod },
-                },
-                {
-                    new: true,
-                }
-            );
-            res.json(user); 
+            console.log('pull')
+            // console.log(already_added)
+            res.json({msg : 'product added'});
         }
         else {
-            let user = await User.findByIdAndUpdate(_id,
+            let user = await User.findByIdAndUpdate({_id},
                 {
-                    $push: { wishlist: prod },
+                    $push: { wishlist : prod },
                 },
                 {
                     new: true,
@@ -149,4 +145,38 @@ const add_to_wishlist = asynchandler(async (req, res) => {
     catch (err) { throw new Error(err); }
 })
 
-module.exports = { creatProduct, getaProduct, getALLproducts, updateProduct, deleteProduct, add_to_wishlist };
+const remove_from_wishlist = asynchandler(async (req, res) => {
+    const { _id } = req.user;
+    const prodId = req.params.id;
+    // console.log(prodId);
+    // const {prodId} = params.body;
+    // console.log('remove')
+    try {
+        // console.log(prodId)
+        const userr = await User.findById(_id);
+        const not_removed = userr.wishlist.find((item) => item.get('_id')===prodId);
+        // console.log(not_removed);
+        if(not_removed) {
+        // console.log('not_removed')
+            let user = await User.findByIdAndUpdate(_id,
+                {
+                    $pull: { wishlist: not_removed },
+                },
+                {
+                    new: true,
+                }
+            );
+            res.json(user);
+        }
+        else {
+            // console.log('removing')
+            res.json({message:'Product already deleted'})
+        }
+    }
+    catch (err) {
+      
+         throw new Error(err); 
+        }
+})
+
+module.exports = { creatProduct, getaProduct, getALLproducts, updateProduct, deleteProduct, add_to_wishlist, remove_from_wishlist };

@@ -4,21 +4,28 @@ import { Link } from 'react-router-dom'
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import ReactStars from 'react-stars'
-import { useDispatch } from 'react-redux';
-import { AddToWishlist } from '../Products/ProductSlice';
+import { useDispatch} from 'react-redux';
+import { AddToWishlist, removefromWishlist } from '../Products/ProductSlice';
+import { getUserfromLocalStorage, getUserProductWishlist } from '../User/UserSlice';
 
 const ProductCard = ({ data , grid, remove}) => {
   const product = data;
   const dispatch = useDispatch();
-  const removeFromWishlist = ()=>{
-    dispatch();
+  const user = getUserfromLocalStorage;
+  const removeFromWishlist = (prodId)=>{
+    dispatch(removefromWishlist(prodId));
+    setTimeout(()=>{
+      dispatch(getUserProductWishlist(user?._id));
+    },300)
   }
   const addToWishlist = (prod)=>{
     // alert(prodId);
     // alert(userId);
     dispatch(AddToWishlist(prod))
   }
-  console.log(product);
+  // const message = useSelector((state)=>state.product.addtowishlist)
+
+  // console.log(message);
   return (
     <div className='product-card'>
     {
@@ -73,7 +80,7 @@ const ProductCard = ({ data , grid, remove}) => {
           <LocalMallOutlinedIcon/>
         </Link>}
     </div>
-    {remove&&<div className='cross' onClick={()=>removeFromWishlist()}>
+    {remove&&<div className='cross' onClick={()=>removeFromWishlist(data?._id)}>
       <img src='https://th.bing.com/th/id/OIP.xHn4P14c-FSSF59QpadUWQAAAA?rs=1&pid=ImgDetMain' alt='delete'/>
     </div>}
     </div>

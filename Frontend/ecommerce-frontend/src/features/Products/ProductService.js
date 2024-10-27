@@ -21,14 +21,29 @@ const addToWishlist = async(prod)=>{
     // console.log('do not works')
     const prodId = prod._id;
     const response = await axios.put(`${base_url}Product/wishlist`,{prodId,prod},authConfig);
-    if(response.data){
+    // console.log(response)
+    if(response.data.msg==='product added') {
+        const res = await axios.delete(`${base_url}Product/removeFromwish/${prodId}`,authConfig);
+        return res.data;
+    }
+    // console.log(response.msg)
+    else if(response.data){
         // console.log(response)
         return response.data
+    }
+}
+
+const removeFromWishlist = async(prodId)=>{
+    // console.log(prodId)
+    const res = await axios.delete(`${base_url}Product/removeFromwish/${prodId}`,authConfig);
+    if(res.data){
+        return res.data
     }
 }
 
 export const productService = {
     getProducts,
     get_a_Product,
-    addToWishlist
+    addToWishlist,
+    removeFromWishlist
 }

@@ -5,16 +5,20 @@ import ProductCard from '../Components/ProductCard'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserfromLocalStorage, getUserProductWishlist } from '../User/UserSlice'
 import { getSingleProduct } from '../Products/ProductSlice'
+import { store } from '../../app/store'
 
 const Wishlist = () => {
-    const dispatch = useDispatch()
+const dispatch = useDispatch()
 const user = getUserfromLocalStorage;
-const getuserProductwishlist = ()=>{
-    dispatch(getUserProductWishlist(user?._id));
-}
 const prodWishlist = useSelector((state)=>state.auth.productWishlist);
-// console.log(prodWishlist)
+// // console.log(prodWishlist)
+// store.subscribe(()=>{
+//   console.log('store changed')
+// })
 useEffect(() => {
+  const getuserProductwishlist = ()=>{
+      dispatch(getUserProductWishlist(user?._id));
+  }
     getuserProductwishlist();
 }, []);
 
@@ -27,7 +31,7 @@ useEffect(() => {
       {prodWishlist?.map((item,indx)=>{
               /* console.log(item); */
                 return (
-                  <ProductCard data = {item} remove />
+                  <ProductCard data = {item} remove key={item._id}/>
                 )
             })}
         

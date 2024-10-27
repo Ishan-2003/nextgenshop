@@ -3,10 +3,10 @@ import Template from '../Components/Template';
 import MetaTitle from '../Components/MetaTitle';
 import Button from '@mui/material/Button';
 import CustomInput from "../Components/CustomInput";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../User/UserSlice";
 
 
@@ -14,6 +14,8 @@ const Login = () => {
   const [variant, setvariant] = useState("outlined");
   const [variant2, setvariant2] = useState("outlined");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const authstate = useSelector(state=>state.auth)
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -24,8 +26,10 @@ const Login = () => {
       password: Yup.string().required('Password required')
     }),
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
       dispatch(loginUser(values))
+      // console.log('navigation');
+      navigate('/')
     },
   });
   return (

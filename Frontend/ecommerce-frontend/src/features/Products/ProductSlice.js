@@ -13,7 +13,7 @@ const initialState = {
     product : {},
     errorMessage : '',
     message:'',
-    addtowishlist:'',
+    addtowishlist:''
 }
 
 export const getAllProducts = createAsyncThunk('product/getProducts',async(thunkAPI)=>{
@@ -37,12 +37,18 @@ export const getSingleProduct = createAsyncThunk('product/getProduct',async(id,t
 export const AddToWishlist = createAsyncThunk('product/wishlist',async(prod,thunkAPI)=>{
     try {
         return await productService.addToWishlist(prod);
+        
     } catch (error) {
         return thunkAPI.rejectWithValue(error);
     }
 })
 
-export const removeWishlistproduct = createAsyncThunk('product/')
+export const removefromWishlist = createAsyncThunk('product/wishlist/remove',async(prodId,thunk)=>{
+    try{
+        return await productService.removeFromWishlist(prodId);
+    }
+    catch(err) {return thunk.rejectWithValue(err);}
+})
 
 
 export const productSlice = createSlice({
@@ -91,9 +97,27 @@ export const productSlice = createSlice({
             state.isError = false
             state.addtowishlist = action.payload
             state.message = 'Product added to Wishlist (200--OK)'
+            // console.log(action.payload);
             toast.success('Product added successfully')
         })
         .addCase(AddToWishlist.rejected,(state,action)=>{
+            state.isError = true
+            state.isLoading = false
+            state.isSuccess = false
+            state.errorMessage = action.error
+            toast.error(`${action.error}`);
+        })
+        .addCase(removefromWishlist.pending,(state)=>{
+            state.isLoading = true
+        })
+        .addCase(removefromWishlist.fulfilled,(state,action)=>{
+            state.isLoading = false
+            state.isSuccess = true
+            state.isError = false
+            state.message = action.payload
+            toast.success('Product removed successfully')
+        })
+        .addCase(removefromWishlist.rejected,(state,action)=>{
             state.isError = true
             state.isLoading = false
             state.isSuccess = false

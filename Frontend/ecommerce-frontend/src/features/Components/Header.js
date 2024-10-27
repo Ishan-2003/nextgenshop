@@ -2,9 +2,11 @@ import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, Button, FormControl } from 'react-bootstrap';
 import { BsSearch } from 'react-icons/bs';
 import { TbCategoryPlus } from "react-icons/tb";
+import { useSelector } from 'react-redux';
 import ReactFlipCard from 'reactjs-flip-card'
 
 const Header = () => {
+    const authstate = useSelector(state=>state.auth);
     const styles = {
         card: {background: 'inherit', color: 'white',width:'inherit',height:'inherit'},
     }
@@ -43,7 +45,8 @@ const Header = () => {
         />
                             Cart
                         </Nav.Link>
-                        <Nav.Link href="/login">
+        {authstate?.user===""?
+                        (<><Nav.Link href="/login">
                         <ReactFlipCard
             frontStyle={styles.card}
             backStyle={styles.card}
@@ -61,7 +64,15 @@ const Header = () => {
             backComponent={<i className="fas fa-user"></i>}
         />
                              Signup
-                        </Nav.Link>
+                        </Nav.Link></>):<Nav.Link href="">
+                        <ReactFlipCard
+            frontStyle={styles.card}
+            backStyle={styles.card}
+            frontComponent={<i className="fas fa-user"></i>}
+            backComponent={<i className="fas fa-user"></i>}
+        />
+                             Welcome {authstate?.user?.firstname}
+                        </Nav.Link>}
                         <Nav.Link href="/wishlist">
                         <ReactFlipCard
             frontStyle={styles.card}
