@@ -1274,6 +1274,8 @@ button[aria-label="scroll back to top"]:hover {
     display: grid;
     width: fit-content;
     padding: 3rem;
+    margin-left: 7rem;
+    padding-left: 1rem;
     gap: 1rem;
     border-right: 1px solid rgba(118, 109, 109, 0.66);
     margin-top: 1rem;
@@ -1297,7 +1299,7 @@ button[aria-label="scroll back to top"]:hover {
     grid-template-columns: 3fr auto;
     gap: 1rem;
     place-items: center;
-
+    margin : 1rem 0rem;
     .Mui-disabled {
         cursor: not-allowed;
     }
@@ -1405,7 +1407,43 @@ button[aria-label="scroll back to top"]:hover {
 
 /* ------------stepper height adjust---------------- */
 .MuiPaper-root {
-    height: fit-content !important;
+    height: max-content !important;
     padding: 0.7rem !important;
     background-color: #f5f5f7 !important;
+}
+.MuiStepLabel-iconContainer{
+    width: fit-content;
+    height: fit-content;
+}
+
+.stepper-hero{
+    display: grid;
+    gap: 1rem;
+}
+
+.stepper-main{
+    font-size: small;
+    font-weight: 300;
+    border-radius: 0.3rem;
+    display: grid;
+    border: 1px solid rgb(165, 165, 165);
+    width: 100%;
+    padding: 0.4rem;
+    padding-bottom: 0.3rem;
+    height: fit-content;
+
+}
+
+/* ------------------------------------MUI input customized------------------------ */
+.MuiInputBase-root{
+   height: inherit;
+}
+.MuiInputLabel-root{
+   top: -10px !important;
+}
+.MuiFormControl-root{
+    display: grid !important;
+    height: 2.4rem !important;
+    font-size: small;
+    align-content: center;
 }

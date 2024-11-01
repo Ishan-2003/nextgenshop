@@ -1,6 +1,7 @@
 const { gen_token } = require("../config/jwtToken");
 const User = require("../models/Usermodel");
 const Cart = require('../models/CartModel');
+const Order = require('../models/OrderModel');
 const asynchandler = require("express-async-handler");
 const validate_mongodb_id = require("../utils/validate_MongoDBid");
 const { gen_refresh_token } = require("../config/refreshtoken");
@@ -281,7 +282,7 @@ const reset_Password = asynchandler(async (req, res) => {
         passwordResetExpires: { $gt: Date.now() },
     });
     // console.log(user);
-    if(!user) throw new Error("Token has expired, try again later");
+    if (!user) throw new Error("Token has expired, try again later");
     user.password = password;
     user.passwordResetToken = undefined;
     user.passwordResetExpires = undefined;
@@ -290,24 +291,15 @@ const reset_Password = asynchandler(async (req, res) => {
     res.json(user);
 })
 
-const get_my_orders = asynchandler(async(req,res)=>{
-    const {_id} = req.user;
-    try{
-        // const orders = await Order.find({user_id})
-    }
-    catch(err){}
-}
-)
-
-const CartHandle = asynchandler(async(req,res)=>{
-    const {productId,color,quantity,price} = req.body;
-    const {_id} = req.user;
+const CartHandle = asynchandler(async (req, res) => {
+    const { productId, color, quantity, price } = req.body;
+    const { _id } = req.user;
     console.log(req);
     validate_mongodb_id(_id);
-    try{
+    try {
         let newCart = await new Cart(
             {
-                userId:_id,
+                userId: _id,
                 productId,
                 quantity,
                 price,
@@ -317,11 +309,26 @@ const CartHandle = asynchandler(async(req,res)=>{
         // console.log(newCart);
         res.status(200).json(newCart);
     }
-    catch(err){
+    catch (err) {
         console.log('cart not Created!!!')
     }
 })
 
+const createOrder = asynchandler(async (req, res) => {
+    const { shippingInfo, OrderedItems, totalPrice, totalPriceAfterDiscount, paymentInfo } = req.body;
+    const { _id } = req.user;
+    try {
+        const order = await Order.create({
+            shippingInfo, OrderedItems, totalPrice, totalPriceAfterDiscount, paymentInfo, user: _id
+        })
+        res.json({
+            order,
+            success: true
+        })
+    }
+    catch (err) { throw new Error(err); }
+})
+
 //from now on we verify mongodb id
 
-module.exports = { createUser, login_usercntrl, get_all_user, get_single_user, delete_single_user, update_single_user, block_a_user, unblock_a_user, handle_refresh_token, logout, update_password, fogotPasswordToken ,reset_Password , CartHandle};
+module.exports = { createUser, login_usercntrl, get_all_user, get_single_user, delete_single_user, update_single_user, block_a_user, unblock_a_user, handle_refresh_token, logout, update_password, fogotPasswordToken, reset_Password, CartHandle, createOrder };

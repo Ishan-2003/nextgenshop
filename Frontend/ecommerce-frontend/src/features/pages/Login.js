@@ -6,7 +6,7 @@ import CustomInput from "../Components/CustomInput";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { loginUser } from "../User/UserSlice";
 
 
@@ -15,7 +15,7 @@ const Login = () => {
   const [variant2, setvariant2] = useState("outlined");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const authstate = useSelector(state=>state.auth)
+  // const authstate = useSelector(state=>state.auth)
   const formik = useFormik({
     initialValues: {
       email: '',

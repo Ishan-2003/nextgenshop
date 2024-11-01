@@ -100,7 +100,7 @@ const Header = () => {
                     <Nav.Link href="/contact">Contact</Nav.Link>
                 </Nav>
             </Navbar>
-
+            
         </>
 
     );
