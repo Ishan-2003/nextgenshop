@@ -30,8 +30,8 @@ const handleChange3 = (event) => {
   }
   return (
     <div>
-      <h4>Contact Information</h4>
-                    <div className='payment-contact-info'>
+      <h4 style={{fontSize:'larger',fontWeight:'bold'}}>Contact Information</h4>
+                    <div className='payment-contact-info' style={{marginTop:'2rem'}}>
                         <TextField
                         className = "Mui-disabled"
                             disabled

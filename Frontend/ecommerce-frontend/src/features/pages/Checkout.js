@@ -143,7 +143,7 @@ const Checkout = () => {
               <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
               <div>
                 <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
-                  Back
+                {((activeStep === 0) ? 'Back to Cart' : ((activeStep === 1) ? 'Return to Cart Info' : ((activeStep === 2) ? 'Return to Cart Products Info' : ((activeStep === 3) ? 'Return to Shipping Info' : ''))))}
                 </Button>
                 <Button
                   variant="contained"
@@ -159,7 +159,7 @@ const Checkout = () => {
 
           </div>
         </div>) : (<></>)}
-
+          <div className='BORDER-RIGHT'></div>
         {activeStep !== 4 && <div className='d-flex flex-column h-100 gap-2 py-5 w-100' style={{ paddingRight: '7rem', paddingLeft: '2rem' }}>
           <div className='product-checkout'>
             <div className='checkout-prod-img'>

@@ -66,13 +66,13 @@ const SteppeerPayment = () => {
   return (
     <div className='stepper-hero'>
       <div className='stepper-main'>
-        <div className='d-grid py-2' style={{gridTemplateColumns:'80px 400px max-content',gap:'1rem',alignItems:'center',justifyContent:'end'}}>
+        <div className='d-grid py-2' style={{gridTemplateColumns:'80px 300px max-content',gap:'1rem',alignItems:'center',justifyContent:'end'}}>
             <p style={{alignSelf:'center',margin:'0px'}}>Contact</p>
             <p style={{alignSelf:'center',margin:'0px'}}>21bcs022@nith.ac.in</p>
             <Link>Change</Link>
         </div>
         <div className='BOTTOM'></div>
-        <div className='d-grid py-2' style={{gridTemplateColumns:'80px 400px max-content',gap:'1rem',alignItems:'center',justifyContent:'end'}}>
+        <div className='d-grid py-2' style={{gridTemplateColumns:'80px 300px max-content',gap:'1rem',alignItems:'center',justifyContent:'end'}}>
             <p style={{alignSelf:'center',margin:'0px'}}>Ship to</p>
             <p style={{alignSelf:'center',margin:'0px'}}>JESSIE SANTANA. 4325 W PALM BEACH RD RM 419. SAN FRANCISCO CA 94116</p>
             <Link>Change</Link>
