@@ -3,56 +3,46 @@ const { stringify } = require('querystring');//find use of stringify in model.js
 
 // Declare the Schema of the Mongo model
 var productSchema = new mongoose.Schema({
-    title:{
-        type:String,
-        required:true,
+    id: {
+        type: Number,
+        required: false,
+    },
+    title: {
+        type: String,
+        required: true,
         trim: true,
     },
-    slug:{
-        type:String,
-        required:true,
-        unique:true,
-        lowercase:true,
+    description: {
+        type: String,
+        required: true,
     },
-    description:{
-        type:String,
-        required:true,
-    },
-    price:{
-        type:Number,
-        required:true,
+    price: {
+        type: Number,
+        required: true,
     },
     category: {
         // type: mongoose.Schema.Types.ObjectId,
-        type : String,
+        type: String,
         // ref:"Category"
-        required : true,
+        required: true,
     },
-    brand:{
+    brand: {
         type: String,
         // enum : ["Xiomi","Samsung","HP"],
-        required : 1,
+        required: 1,
     },
-    quantity:{
-        type : Number,
-        required : true,
+    image: {
+        type: String,
+        required: 0,
     },
-    sold:{
-        type: Number,
-        default: 0,
-    },
-    images:{
-        type : Array,
-    },
-    color: [{ type: mongoose.Schema.Types.ObjectId, ref: "Color" }],
-    tags:[],
-    ratings:[
-        {
-            star: Number,
-            postedby: {type: mongoose.Schema.Types.ObjectId,ref : "User"}
-        },
-    ],
-},{
+    slug:{
+        type:String,
+        required:false,
+        unique:true,
+        lowercase:true,
+    }
+
+}, {
     timestamps: true,
 });
 

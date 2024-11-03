@@ -29,8 +29,9 @@ const authmiddleware = asynchandler(async (req, res, next) => {
 });
 
 const is_Admin = asynchandler(async (req, res, next) => {
+    // console.log(req.user);
     const { email } = req.user;
-    console.log(req.user);
+    // console.log(req.user);
     const adminUser = await User.findOne({ email });
     if(adminUser.role !== "Admin"){
         console.log("auth failed")

@@ -2,7 +2,7 @@ const dbConnect = require("./config/dbConnect")
 const bodyParser = require('body-parser');
 const express = require('express')
 const cors = require('cors');
-const dotenv = require('dotenv').config();
+const dotenv = require('dotenv');
 const app = express();
 const PORT = process.env.PORT || 5001;
 const authRouter = require("./routes/Authroute");
@@ -16,6 +16,7 @@ const brandrouter = require('./routes/Brandroute');
 const colorrouter = require('./routes/Colorroute');
 const morgan = require("morgan");
 
+dotenv.config();
 dbConnect();
 // app.use("/",(req,res)=>{res.send("running on and on and on...");});
 app.use(cors());

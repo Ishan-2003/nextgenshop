@@ -7,10 +7,11 @@ const creatProduct = asynchandler(async (req, res) => {
     //     msg: "its product post route",
     // });
     try {
-        if (req.body.title) {
-            req.body.slug = slugify(req.body.title);
-        }
-        const new_product = await Product.create(req.body);
+        req.body.forEach((elem,indx)=>{
+            if(elem.title) req.body[indx].slug = slugify(req.body[indx].title);
+        })
+        
+        const new_product = await Product.insertMany(req.body);
         res.json(new_product);
     }
     catch (err) {

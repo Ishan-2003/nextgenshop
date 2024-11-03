@@ -34,9 +34,9 @@ const ProductCard = ({ data , grid, remove}) => {
   return (
     <div className='product-card'>
     {
-      (grid===1)?<div className='d-grid single-grid' style={{gridTemplateColumns:'repeat(2,max-content)'}} >
+      (grid===1)?(<div className='d-grid single-grid' style={{gridTemplateColumns:'repeat(2,max-content)'}} >
       <div className="product-image">
-        <img src='https://th.bing.com/th/id/OIP.XjqWdgNTvW76t7sDEUPy5AAAAA?rs=1&pid=ImgDetMain' alt="product img" />
+        <img src={product?.image} alt="product img" className='img-fluid'/>
       </div>
       <div className='single-prod'>
       <div className="product-desc">
@@ -56,9 +56,9 @@ const ProductCard = ({ data , grid, remove}) => {
       </p>
 
       </div>
-    </div>:<div className='d-grid multi-grid' >
+    </div>):(<div className='d-grid multi-grid'>
       <div className="product-image">
-        <img src='https://th.bing.com/th/id/OIP.XjqWdgNTvW76t7sDEUPy5AAAAA?rs=1&pid=ImgDetMain' alt="product img" />
+        <img src={product?.image} alt="product img" />
       </div>
       <div className="product-desc">
         <h6 className='product-brand'>
@@ -75,7 +75,7 @@ const ProductCard = ({ data , grid, remove}) => {
       <p className='prod-price'>
           <span style={{fontSize:'1.3rem'}}>$</span>{product?.price}
       </p>
-    </div>
+    </div>)
     }
     <div className='action-bar position-absolute'>
         <Link className='action-icon' to={`/product/${data?._id}`}>

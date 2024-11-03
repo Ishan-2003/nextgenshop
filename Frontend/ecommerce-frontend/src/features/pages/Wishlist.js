@@ -27,11 +27,11 @@ useEffect(() => {
       <MetaTitle title='Wishlist' />
       <Template title='Wishlist' />
       {prodWishlist.length === 0 && <p className='fs-3 d-grid' style={{placeSelf:'center'}}>No Data</p>}
-      <div className='d-grid' style={{gridTemplateColumns:'repeat(4,max-content)',gap:'1rem',margin:'1rem',placeSelf:'center'}}>
+      <div className='d-grid' style={{gridTemplateColumns:'repeat(4,max-content)',gap:'1rem',margin:'1rem',placeSelf:'center',width:"10rem"}}>
       {prodWishlist?.map((item,indx)=>{
               /* console.log(item); */
                 return (
-                  <ProductCard data = {item} remove key={item._id}/>
+                  <ProductCard data = {item} remove key={item._id} grid = {1}/>
                 )
             })}
         

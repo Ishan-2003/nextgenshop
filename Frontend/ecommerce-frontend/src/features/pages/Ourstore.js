@@ -171,7 +171,7 @@ useEffect(() => {
                             </select>
                         </div>
                         <div className='display-setting'>
-                            <p>22 products</p>
+                            <p>{productState.length}</p>
                             <div>
                                 <RxDragHandleVertical size={31} onClick={() => gridsetMethod(3)} />
                                 <FaGripLinesVertical size={30} onClick={() => gridsetMethod(2)} />

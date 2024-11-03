@@ -120,9 +120,6 @@ BsSearch.search {
     display: grid;
     gap: 1rem;
 
-    .product-caption {
-        width: 50%;
-    }
 }
 
 /* max-width:767px; */
@@ -374,12 +371,13 @@ BsSearch.search {
     display: grid;
     place-items: center;
     /* text-align: center; */
-    height: 100%;
+    height: 5rem;
+    width: 5rem;
 
     /* object-fit: contain; */
     img {
-        width: 70%;
-        height: 60%;
+        width: 100%;
+        height: 100%;
     }
 }
 
@@ -390,32 +388,34 @@ BsSearch.search {
     display: grid;
     margin-top: 1.5rem;
 
-    p {
-        width: fit-content;
-        margin-bottom: 0.2rem;
-        /* text-wrap: wrap; */
-    }
+    
+}
+.product-desc p {
+    width: fit-content;
+    margin-bottom: 0.2rem;
+    /* text-wrap: wrap; */
+}
 
-    .product-brand {
-        font-size: small;
-    }
 
-    .product-caption {
 
+.product-desc h6{
+    text-align: center;
+    margin-bottom: 0px;
+    font-size: small;
+    color: rgb(240, 128, 17);
+}
+.product-brand {
+    font-size: small;
+}
+
+.product-caption {
         padding: 0.1rem 0rem;
         font-weight: bolder;
         font-size: 0.9rem;
         text-align: left;
+        overflow-y: scroll;
+        overflow-x: scroll;
     }
-
-    h6 {
-        text-align: center;
-        margin-bottom: 0px;
-        font-size: small;
-        color: rgb(240, 128, 17);
-    }
-
-}
 
 .product-sub-caption {
     font-size: 0.9rem;
@@ -441,7 +441,7 @@ BsSearch.search {
 }
 
 .multi-grid {
-    height: 100%;
+    height: 15rem;
     grid-template-rows: repeat(5, max-content);
 }
 

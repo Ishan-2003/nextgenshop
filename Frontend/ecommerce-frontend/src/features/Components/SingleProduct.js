@@ -31,11 +31,11 @@ const SingleProduct = () => {
           <EasyZoomOnMove mainImage={{
             width: 100,
             height: 466,
-            src: `${fetchedProduct?.product?.images}`,
+            src: `${fetchedProduct?.product?.image}`,
             alt: "My Product",
           }}
             zoomImage={{
-              src: `${fetchedProduct?.product?.images}`,
+              src: `${fetchedProduct?.product?.image}`,
               alt: "My Product",
             }}
           />
@@ -58,10 +58,10 @@ const SingleProduct = () => {
         </div>
         <div className='main-prod-desc'>
             {/* <p>{fetchedProduct?.product?.description}</p> */}
-            <h5>Product description heading</h5>
+            <h5>Product description</h5>
             <div className='BOTTOM'></div>
             <div className='d-grid py-3' style={{gridTemplateRows:'repeat(3,max-content)',gap:'0rem',alignItems:'center'}}>
-            <p className='fw-bolder fs-6'>$500</p>
+            <p className='fw-bolder fs-6'>{fetchedProduct?.product?.price}</p>
             <div className='d-grid' style={{gridTemplateRows:'repeat(2,max-content)',gap:'0rem'}}>
             <div className='d-grid' style={{gridTemplateColumns:'repeat(2,max-content)',gap:'0.6rem',justifyItems:'center'}}>
             <ReactStars/>
