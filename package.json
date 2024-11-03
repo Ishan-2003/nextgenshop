@@ -24,6 +24,7 @@
     "formic": "^0.0.10",
     "fortawesome": "^0.0.1-security",
     "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.10.0",
     "mongoose": "^8.0.4",
     "morgan": "^1.10.0",
     "node": "^21.2.0",

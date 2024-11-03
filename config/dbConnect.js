@@ -1,7 +1,14 @@
+//     const connection = mongoose.connect(process.env.MONGODB_URI);
 const mongoose = require('mongoose');
 const dbConnect = ()=>{
    try {
-    const connection = mongoose.connect(process.env.MONGODB_URI);
+    const client = new MongoClient(process.env.MONGODB_URI, {
+        serverApi: {
+          version: ServerApiVersion.v1,
+          strict: true,
+          deprecationErrors: true,
+        }
+      });
     console.log("Database connected successfully");
 }
 catch(err){

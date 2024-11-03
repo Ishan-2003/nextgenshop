@@ -19,8 +19,8 @@ router.delete("/:id", delete_single_user);
 router.put("/edit_user/:id", authmiddleware, update_single_user);
 router.put("/block_user/:id", authmiddleware, is_Admin, block_a_user);
 router.put("/unblock_user/:id", authmiddleware, is_Admin, unblock_a_user);
-router.post('/cart',authmiddleware, CartHandle);
-router.post('/cart/create-order',authmiddleware, createOrder);
+router.post('/create-cart',authmiddleware, CartHandle);
+router.post('/create-order',authmiddleware, createOrder);
 // router.get("/refresh/:id", handle_refresh_token);
 
 module.exports = router;

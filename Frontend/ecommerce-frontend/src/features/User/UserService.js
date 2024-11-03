@@ -14,25 +14,31 @@ const loginUser = async (userdata) => {
     return response.data
 }
 
-const getUserProdWishlist = async(id)=>{
-    const response = await axios.get(`${base_url}User/${id}`,authConfig);
+const getUserProdWishlist = async (id) => {
+    const response = await axios.get(`${base_url}User/${id}`, authConfig);
     // console.log(response.data.get_a_user.wishlist)
-    if(response.data) return response.data.get_a_user.wishlist;
-    return {msg:'Wishlist err!!!'}
-}
- 
-const addToCart = async(cartData)=>{
-    const response = await axios.post(`${base_url}User/cart`,cartData,authConfig);
-    // console.log(response.data.get_a_user.wishlist)
-    if(response.data) return response.data;
-    return {msg:'Cart err !!!'}
+    if (response.data) return response.data.get_a_user.wishlist;
+    return { msg: 'Wishlist err!!!' }
 }
 
+const addToCart = async (cartData) => {
+    // console.log('here');
+    const response = await axios.post(`${base_url}User/create-cart`, cartData, authConfig);
+    // console.log(response.data.get_a_user.wishlist)
+    if (response.data) return response.data;
+    return { msg: 'Cart err !!!' }
+}
+
+const newCart = async (cartData) => {
+    const res = await axios.post(`${base_url}User/cart/create-order`)
+    if(res.data) return res.data;
+}     
 
 
 export const authService = {
     registerUser,
     loginUser,
     getUserProdWishlist,
-    addToCart
+    addToCart,
+    newCart
 }

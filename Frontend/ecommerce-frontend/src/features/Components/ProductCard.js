@@ -6,7 +6,8 @@ import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import ReactStars from 'react-stars'
 import { useDispatch} from 'react-redux';
 import { AddToWishlist, removefromWishlist } from '../Products/ProductSlice';
-import { getUserfromLocalStorage, getUserProductWishlist } from '../User/UserSlice';
+import { addProductToCart, getUserfromLocalStorage, getUserProductWishlist } from '../User/UserSlice';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 const ProductCard = ({ data , grid, remove}) => {
   const product = data;
@@ -22,6 +23,10 @@ const ProductCard = ({ data , grid, remove}) => {
     // alert(prodId);
     // alert(userId);
     dispatch(AddToWishlist(prod))
+  }
+
+  const addToCart = (product)=>{
+    dispatch(addProductToCart(product))
   }
   // const message = useSelector((state)=>state.product.addtowishlist)
 
@@ -75,6 +80,9 @@ const ProductCard = ({ data , grid, remove}) => {
     <div className='action-bar position-absolute'>
         <Link className='action-icon' to={`/product/${data?._id}`}>
         <RemoveRedEyeOutlinedIcon/>
+        </Link>
+        <Link className='action-icon' onClick={(e)=>addToCart(product)}>
+        <AddShoppingCartIcon/>
         </Link>
         {!remove&&<Link className='action-icon' onClick={(e)=>addToWishlist(product)}>
           <LocalMallOutlinedIcon/>

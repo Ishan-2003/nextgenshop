@@ -14,6 +14,7 @@ import StepperInfo from './StepperInfo';
 import StepperShipping from './StepperShipping';
 import SteppeerPayment from './SteppeerPayment';
 import PaymentGateway from './PaymentGateway';
+import { useDispatch, useSelector } from 'react-redux';
 
 function QontoStepIcon(props) {
   const classes = useQontoStepIconStyles();
@@ -117,7 +118,8 @@ const Checkout = () => {
     setActiveStep(0);
   };
 
-
+  const dispatch = useDispatch();
+  
   useEffect(() => {
     setActiveStep(0)
     return () => {

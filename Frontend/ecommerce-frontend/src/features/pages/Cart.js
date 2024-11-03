@@ -7,11 +7,17 @@ import { GoPlus } from "react-icons/go";
 import { HiOutlineMinus } from "react-icons/hi2";
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { newOrder } from '../User/UserSlice';
 
 const Cart = () => {
     const [quantity, setquantity] = useState(0);
     const increase = () => { setquantity(quantity + 1); };
     const decrease = () => { setquantity(quantity - 1); };
+    const dispatch = useDispatch();
+    const handleCheckout = (cartData)=>{
+        dispatch(newOrder(cartData))
+    }
     return (
         <div>
             <div style={{backgroundColor:'white'}}>
@@ -182,7 +188,7 @@ const Cart = () => {
                     </div>
                 </div>
                 <Link to='/products'><Button className='d-flex gap-3 banner-btn fs-7 cart-btn'>Continue Shopping</Button></Link>
-                <Link to='/checkout' className='d-flex justify-content-end'><Button className='d-flex gap-3 banner-btn fs-7 cart-btn'>Checkout</Button></Link>
+                <Link to='/checkout' className='d-flex justify-content-end'><Button className='d-flex gap-3 banner-btn fs-7 cart-btn' onClick={()=>handleCheckout()}>Checkout</Button></Link>
                 <div className='BOTTOM-BORDER'></div>
             </div>
         </div>

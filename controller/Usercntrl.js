@@ -294,7 +294,7 @@ const reset_Password = asynchandler(async (req, res) => {
 const CartHandle = asynchandler(async (req, res) => {
     const { productId, color, quantity, price } = req.body;
     const { _id } = req.user;
-    console.log(req);
+    // console.log(color);
     validate_mongodb_id(_id);
     try {
         let newCart = await new Cart(
@@ -302,8 +302,7 @@ const CartHandle = asynchandler(async (req, res) => {
                 userId: _id,
                 productId,
                 quantity,
-                price,
-                color
+                price
             }
         ).save();
         // console.log(newCart);

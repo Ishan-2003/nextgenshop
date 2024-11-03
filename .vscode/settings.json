@@ -72,5 +72,5 @@
         "valarray": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled",
-    "dotenv.enableAutocloaking": true
+    "dotenv.enableAutocloaking": false
 }
