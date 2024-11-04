@@ -31,7 +31,7 @@ useEffect(() => {
       {prodWishlist?.map((item,indx)=>{
               /* console.log(item); */
                 return (
-                  <ProductCard data = {item} remove key={item._id} grid = {1}/>
+                  <ProductCard data = {item} remove key={item._id} grid = {4}/>
                 )
             })}
         

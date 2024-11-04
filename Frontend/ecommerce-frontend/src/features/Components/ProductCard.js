@@ -56,7 +56,8 @@ const ProductCard = ({ data , grid, remove}) => {
       </p>
 
       </div>
-    </div>):(<div className='d-grid multi-grid'>
+    </div>):
+    (<div className='d-grid multi-grid'>
       <div className="product-image">
         <img src={product?.image} alt="product img" />
       </div>
