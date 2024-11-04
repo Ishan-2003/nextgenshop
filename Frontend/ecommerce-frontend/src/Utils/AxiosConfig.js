@@ -1,4 +1,4 @@
-export const base_url = 'http://localhost:5001/api/'
+export const base_url = 'https://nextgen-backend-jet.vercel.app/'
 
 const getTokenFromLocaStorageUser = localStorage.getItem('User')?JSON.parse(localStorage.getItem('User')):null;
 // console.log('here')
