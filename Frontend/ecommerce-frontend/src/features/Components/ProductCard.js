@@ -48,9 +48,6 @@ const ProductCard = ({ data , grid, remove}) => {
         </p>
       </div>
       <ReactStars/>
-        <p className='product-sub-caption'>
-          {product?.description}
-        </p>
       <p className='prod-price'>
           <span style={{fontSize:'1.3rem'}}>$</span>{product?.price}
       </p>
@@ -70,9 +67,6 @@ const ProductCard = ({ data , grid, remove}) => {
         </p>
       </div>
       <ReactStars/>
-        <p className='product-sub-caption'>
-          {product?.description}
-        </p>
       <p className='prod-price'>
           <span style={{fontSize:'1.3rem'}}>$</span>{product?.price}
       </p>
